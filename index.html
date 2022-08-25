@@ -45,7 +45,7 @@
         <div class="form-control">
           <label for="password">Senha</label>
           <input
-            type="text"
+            type="password"
             name="password"
             id="password"
             placeholder="Digite a sua senha"
@@ -55,20 +55,93 @@
           Quer ajuda para criar uma senha segura?
           <span id="generate-password">Clique aqui!</span>
         </p>
-        <div id="generated-password">
-          <p>Aqui está a sua senha!</p>
-          <h4></h4>
+        <div id="filter-generate-password">
+          <h3>Gerador de senha</h3>
+
+          <p>Marque o que você deseja adicionar na senha</p>
+
+          <div id="number-passwords" class="check-control">
+            <label for="number-password">Escolha o tamanho da senha: </label>
+            <input
+              type="number"
+              id="number-password"
+              min="10"
+              max="20"
+              value="10"
+            />
+          </div>
+
+          <div class="check-control">
+            <label for="check-generate-upper-case"
+              >Desejo adicionar letras maíusculas</label
+            >
+            <input
+              type="checkbox"
+              name="check-generate-upper-case"
+              class="check"
+              id="check-generate-upper-case"
+              checked
+            />
+          </div>
+          <div class="check-control">
+            <label for="check-generate-lower-case"
+              >Desejo adicionar letras minúsculas</label
+            >
+            <input
+              type="checkbox"
+              name="check-generate-lower-case"
+              class="check"
+              id="check-generate-lower-case"
+              checked
+            />
+          </div>
+          <div class="check-control">
+            <label for="check-generate-number">Desejo adicionar números</label>
+            <input
+              type="checkbox"
+              name="check-generate-number"
+              class="check"
+              id="check-generate-number"
+              checked
+            />
+          </div>
+          <div class="check-control">
+            <label for="check-generate-symbol"
+              >Desejo adicionar caracteres especiais</label
+            >
+            <input
+              type="checkbox"
+              name="check-generate-symbol"
+              class="check"
+              id="check-generate-symbol"
+              checked
+            />
+          </div>
+
+          <div id="aplicar-style">
+            <input type="submit" id="aplica-button" value="Aplicar" />
+          </div>
+
+          <div id="generated-password">
+            <p>Aqui está a sua senha!</p>
+            <div id="resultado">
+              <input type="text" name="texto" id="texto" />
+            </div>
+            <input type="submit" id="copiar" value="Copy" />
+          </div>
         </div>
+
         <div class="form-control">
           <label for="confirmpassword">Confirmação de senha</label>
           <input
-            type="text"
+            type="password"
             name="confirmpassword"
             id="confirmpassword"
             placeholder="Comfirme a sua senha"
           />
         </div>
-        <input type="submit" value="Cadastrar" />
+
+        <input type="submit" id="cadastrar" value="Cadastrar" />
       </div>
     </div>
   </body>

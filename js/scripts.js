@@ -1,6 +1,21 @@
 // Seleção de elementos
-const generatePassowrdButton = document.querySelector("#generate-password");
+const generatePasswordButton = document.querySelector("#generate-password");
 const generatedPasswordElement = document.querySelector("#generated-password");
+const filterGeneratePassword = document.querySelector(
+  "#filter-generate-password"
+);
+const numberPassword = document.querySelector("#number-password");
+const checkGenerateUpperCase = document.querySelector(
+  "#check-generate-upper-case"
+);
+const checkGenerateLowerCase = document.querySelector(
+  "#check-generate-lower-case"
+);
+const checkGenerateNumber = document.querySelector("#check-generate-number");
+const checkGenerateSymbol = document.querySelector("#check-generate-symbol");
+const ativarButton = document.querySelector("#aplica-button");
+const checkBoxes = document.querySelectorAll(".check");
+const copyButton = document.querySelector("#copiar");
 
 //Funções
 const getLetterLowerCase = () => {
@@ -21,6 +36,17 @@ const getSymbol = () => {
   return symbols[Math.floor(Math.random() * symbols.length)];
 };
 
+const checkBox = () => {
+  let noCheckedBoxes = true;
+  for (i = 0; i < checkBoxes.length; ++i) {
+    if (checkBoxes[i].checked) {
+      noCheckedBoxes = false;
+    }
+  }
+  if (noCheckedBoxes) {
+    checkBoxes[0].checked = true;
+  }
+};
 const generatePassword = (
   getLetterLowerCase,
   getLetterUpperCase,
@@ -29,14 +55,27 @@ const generatePassword = (
 ) => {
   let password = "";
 
-  const passwordLength = 10;
+  checkBox();
 
-  const generators = [
-    getLetterLowerCase,
-    getLetterUpperCase,
-    getNumber,
-    getSymbol,
-  ];
+  const passwordLength = numberPassword.value;
+
+  if (passwordLength > 20) {
+    return;
+  }
+
+  const generators = [];
+  if (checkGenerateUpperCase.checked) {
+    generators.push(getLetterUpperCase);
+  }
+  if (checkGenerateLowerCase.checked) {
+    generators.push(getLetterLowerCase);
+  }
+  if (checkGenerateNumber.checked) {
+    generators.push(getNumber);
+  }
+  if (checkGenerateSymbol.checked) {
+    generators.push(getSymbol);
+  }
 
   for (let i = 0; i < passwordLength; i = i + generators.length) {
     generators.forEach(() => {
@@ -50,15 +89,36 @@ const generatePassword = (
   password = password.slice(0, passwordLength);
 
   generatedPasswordElement.style.display = "block";
-  generatedPasswordElement.querySelector("h4").innerText = password;
+  generatedPasswordElement.querySelector("#texto").value = password;
 };
 
 //Eventos
-generatePassowrdButton.addEventListener("click", () => {
+generatePasswordButton.addEventListener("click", () => {
+  filterGeneratePassword.style.display = "block";
   generatePassword(
     getLetterLowerCase,
     getLetterUpperCase,
     getNumber,
     getSymbol
   );
+});
+
+ativarButton.addEventListener("click", () => {
+  generatePassword(
+    getLetterLowerCase,
+    getLetterUpperCase,
+    getNumber,
+    getSymbol
+  );
+});
+
+copyButton.addEventListener("click", () => {
+  let textoCopiado = generatedPasswordElement.querySelector("#texto");
+  textoCopiado.select();
+  textoCopiado.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  copyButton.value = "Copied";
+  setTimeout(function () {
+    copyButton.value = "Copy";
+  }, 500);
 });

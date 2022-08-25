@@ -99,16 +99,83 @@ input:focus {
   color: #0099ff;
 }
 
-#register-form #generated-password {
+#filter-generate-password {
   border: 1px solid #0099ff;
   border-radius: 4px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  padding: 0.4rem;
-  color: #333;
+  padding: 1rem;
   text-align: center;
+  font-weight: bold;
+  height: auto;
   margin-bottom: 1rem;
   display: none;
+}
+
+#filter-generate-password h3 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+#filter-generate-password p {
+  font-size: 0.9rem;
+  color: #696969;
+  margin-top: 0.5rem;
+}
+
+#number-passwords {
+  margin: 2rem 0;
+  align-items: center;
+}
+
+#number-passwords input {
+  font-weight: bold;
+  font-size: 0.8rem;
+  width: 35px;
+  height: 16px;
+}
+
+.check-control {
+  color: #333;
+  font-weight: bold;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#aplicar-style {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+#aplicar-style input {
+  background-color: #81d340;
+  color: #fff;
+  opacity: 0.8;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.4rem 0.8rem;
+  max-width: 140px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+#copiar {
+  margin: 1rem;
+  background-color: #81d340;
+  color: #fff;
+  opacity: 0.8;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.4rem 0.8rem;
+  max-width: 140px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+#register-form #generated-password {
+  margin: 3rem 0 0 1rem;
+  color: #333;
+  text-align: center;
 }
 
 #register-form #generated-password p {
@@ -116,7 +183,21 @@ input:focus {
   margin-bottom: 0.5rem;
 }
 
-#register-form input[type="submit"] {
+#resultado {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+#texto {
+  text-align: center;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#cadastrar {
   background-color: #81d340;
   color: #fff;
   opacity: 0.8;
@@ -129,6 +210,8 @@ input:focus {
   transition: 0.4s;
 }
 
-#register-form input[type="submit"]:hover {
+#cadastrar:hover,
+#aplicar-style input:hover,
+#copiar:hover {
   opacity: 1;
 }
